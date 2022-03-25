@@ -20,9 +20,9 @@ namespace StringCalculatorSpecs
 
     public class StringCalculator
     {
-        public object Add(string inputString)
+        public int Add(string inputString)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }

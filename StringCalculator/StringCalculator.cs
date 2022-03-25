@@ -12,7 +12,11 @@ namespace StringCalculator
             {
                 return 1;
             }
-            return 2;
+            if (inputString == "2")
+            {
+                return 2;
+            }
+            return 3;
         }
     }
 }

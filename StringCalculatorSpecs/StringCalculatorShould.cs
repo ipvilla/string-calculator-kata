@@ -1,6 +1,5 @@
-using System;
-using NUnit.Framework;
 using FluentAssertions;
+using NUnit.Framework;
 
 namespace StringCalculatorSpecs
 {
@@ -10,19 +9,11 @@ namespace StringCalculatorSpecs
         public void return_0_when_input_string_is_empty()
         {
             var inputString = string.Empty;
-            StringCalculator stringCalculator = new StringCalculator();
+            var stringCalculator = new StringCalculator.StringCalculator();
 
             var result = stringCalculator.Add(inputString);
 
             result.Should().Be(0);
-        }
-    }
-
-    public class StringCalculator
-    {
-        public int Add(string inputString)
-        {
-            return 0;
         }
     }
 }

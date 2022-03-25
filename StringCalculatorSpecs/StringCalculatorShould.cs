@@ -24,7 +24,7 @@ namespace StringCalculatorSpecs
         }
 
         [Test]
-        public void return_string_as_a_number_when_input_string_is_only_one_number()
+        public void return_1_as_a_number_when_input_string_is_1()
         {
             var inputString = "1";
 

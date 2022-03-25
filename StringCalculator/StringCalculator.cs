@@ -4,19 +4,12 @@ namespace StringCalculator
     {
         public int Add(string inputString)
         {
-            if (inputString == "")
+            if (inputString == string.Empty)
             {
                 return 0;
             }
-            if (inputString == "1")
-            {
-                return 1;
-            }
-            if (inputString == "2")
-            {
-                return 2;
-            }
-            return 3;
+            return int.Parse(inputString);
+
         }
     }
 }

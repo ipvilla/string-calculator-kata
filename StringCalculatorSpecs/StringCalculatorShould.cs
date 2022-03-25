@@ -23,34 +23,14 @@ namespace StringCalculatorSpecs
             result.Should().Be(0);
         }
 
-        [Test]
-        public void return_1_as_a_number_when_input_string_is_1()
+        [TestCase("1", 1)]
+        [TestCase("2", 2)]
+        [TestCase("3", 3)]
+        public void return_input_string_as_a_number_when_input_string_is_only_one_number(string inputString, int expectedResult)
         {
-            const string inputString = "1";
-
             var result = _stringCalculator.Add(inputString);
 
-            result.Should().Be(1);
-        }
-
-        [Test]
-        public void return_2_as_a_number_when_input_string_is_2()
-        {
-            const string inputString = "2";
-
-            var result = _stringCalculator.Add(inputString);
-
-            result.Should().Be(2);
-        }
-
-        [Test]
-        public void return_3_as_a_number_when_input_string_is_3()
-        {
-            const string inputString = "3";
-
-            var result = _stringCalculator.Add(inputString);
-
-            result.Should().Be(3);
+            result.Should().Be(expectedResult);
         }
     }
 }

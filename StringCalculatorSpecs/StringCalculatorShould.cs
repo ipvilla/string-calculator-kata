@@ -42,5 +42,15 @@ namespace StringCalculatorSpecs
 
             result.Should().Be(2);
         }
+
+        [Test]
+        public void return_3_as_a_number_when_input_string_is_3()
+        {
+            const string inputString = "3";
+
+            var result = _stringCalculator.Add(inputString);
+
+            result.Should().Be(3);
+        }
     }
 }

@@ -32,5 +32,15 @@ namespace StringCalculatorSpecs
 
             result.Should().Be(1);
         }
+
+        [Test]
+        public void return_2_as_a_number_when_input_string_is_2()
+        {
+            var inputString = "2";
+
+            var result = _stringCalculator.Add(inputString);
+
+            result.Should().Be(2);
+        }
     }
 }

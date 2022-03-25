@@ -4,12 +4,7 @@ namespace StringCalculator
     {
         public int Add(string inputString)
         {
-            if (inputString == "")
-            {
-                return 0;
-            }
-
-            return 1;
+            return inputString == "" ? 0 : 1;
         }
     }
 }

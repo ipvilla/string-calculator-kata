@@ -1,18 +1,28 @@
+using System;
 using NUnit.Framework;
+using FluentAssertions;
 
 namespace StringCalculatorSpecs
 {
     public class StringCalculatorShould
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public void Test1()
+        public void return_0_when_input_string_is_empty()
         {
-            Assert.Pass();
+            var inputString = string.Empty;
+            StringCalculator stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add(inputString);
+
+            result.Should().Be(0);
+        }
+    }
+
+    public class StringCalculator
+    {
+        public object Add(string inputString)
+        {
+            throw new NotImplementedException();
         }
     }
 }

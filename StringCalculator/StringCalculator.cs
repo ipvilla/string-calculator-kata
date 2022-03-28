@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace StringCalculator
 {
     public class StringCalculator
@@ -10,8 +12,14 @@ namespace StringCalculator
             }
             if (inputString.Contains(","))
             {
+                var sum = 0;
                 var numbers = inputString.Split(",");
-                return int.Parse(numbers[0]) + int.Parse(numbers[1]);
+                for(int i = 0 ; i < numbers.Length; i++)
+                {
+                    sum += int.Parse(numbers[i]);
+                }
+
+                return sum;
             }
             return int.Parse(inputString);
         }

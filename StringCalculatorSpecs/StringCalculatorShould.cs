@@ -52,5 +52,13 @@ namespace StringCalculatorSpecs
 
             result.Should().Be(6);
         }
+
+        [Test]
+        public void return_sum_of_numbers_when_one_of_the_separators_is_a_carriage_return()
+        {
+            var result = _stringCalculator.Add("1\n2,3");
+
+            result.Should().Be(6);
+        }
     }
 }

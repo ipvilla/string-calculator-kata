@@ -28,5 +28,13 @@ namespace StringCalculatorSpecs
 
             result.Should().Be(0);
         }
+
+        [Test]
+        public void return_zero_when_input_string_is_whitespace()
+        {
+            var result = _stringCalculator.Add(" ");
+
+            result.Should().Be(0);
+        }
     }
 }

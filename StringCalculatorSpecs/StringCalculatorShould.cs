@@ -19,5 +19,15 @@ namespace StringCalculatorSpecs
 
             result.Should().Be(1);
         }
+
+        [Test]
+        public void return_zero_when_input_string_is_empty()
+        {
+            var stringCalculator = new StringCalculator.StringCalculator();
+
+            var result = stringCalculator.Add("");
+
+            result.Should().Be(0);
+        }
     }
 }

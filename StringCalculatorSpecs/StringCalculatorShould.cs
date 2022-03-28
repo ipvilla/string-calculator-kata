@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -25,7 +26,7 @@ namespace StringCalculatorSpecs
     {
         public int Add(string inputString)
         {
-            throw new System.NotImplementedException();
+            return int.Parse(inputString);
         }
     }
 }

@@ -36,5 +36,13 @@ namespace StringCalculatorSpecs
 
             result.Should().Be(0);
         }
+
+        [Test]
+        public void return_sum_of_numbers_when_input_string_is_two_numbers_separated_by_comma()
+        {
+            var result = _stringCalculator.Add("1,2");
+
+            result.Should().Be(3);
+        }
     }
 }

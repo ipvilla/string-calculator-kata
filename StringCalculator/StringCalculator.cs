@@ -4,7 +4,7 @@ namespace StringCalculator
     {
         public int Add(string inputString)
         {
-            if (inputString == "")
+            if (string.IsNullOrWhiteSpace(inputString))
             {
                 return 0;
             }

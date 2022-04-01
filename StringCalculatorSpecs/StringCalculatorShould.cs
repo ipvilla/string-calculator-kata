@@ -22,7 +22,7 @@ namespace StringCalculatorSpecs
 
     public class StringCalculator
     {
-        public int Add(string inputString)
+        public int Add(string numbers)
         {
             return 0;
         }

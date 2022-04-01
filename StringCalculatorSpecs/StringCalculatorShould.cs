@@ -28,6 +28,16 @@ namespace StringCalculatorSpecs
 
             Assert.AreEqual(1, result);
         }
+
+        [Test]
+        public void return_sum_of_numbers_when_input_string_is_two_numbers_separated_by_comma()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("1,2");
+
+            Assert.AreEqual(3, result);
+        }
     }
 
     public class StringCalculator

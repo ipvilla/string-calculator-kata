@@ -32,6 +32,16 @@ namespace StringCalculatorSpecs
 
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void return_sum_of_numbers_when_input_string_is_numbers_separated_by_commas_and_carriage_returns()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("1\n2,3");
+
+            Assert.AreEqual(6, result);
+        }
     }
 
     public class StringCalculator

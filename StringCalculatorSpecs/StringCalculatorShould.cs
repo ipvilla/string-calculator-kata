@@ -24,7 +24,7 @@ namespace StringCalculatorSpecs
         [TestCase("1", 1)]
         [TestCase("1,2", 3)]
         [TestCase("1,2,3", 6)]
-        public void return_input_string_as_number_when_input_string_is_numbers_separated_by_commas(string inputNumbers, int expectedResult)
+        public void return_sum_of_numbers_when_input_string_is_numbers_separated_by_commas(string inputNumbers, int expectedResult)
         {
             var stringCalculator = new StringCalculator();
 

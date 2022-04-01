@@ -18,6 +18,16 @@ namespace StringCalculatorSpecs
 
             Assert.AreEqual(0, result);
         }
+
+        [Test]
+        public void return_input_string_as_number_when_input_string_is_only_one_number()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("1");
+
+            Assert.AreEqual(1, result);
+        }
     }
 
     public class StringCalculator

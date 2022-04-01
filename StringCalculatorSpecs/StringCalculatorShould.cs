@@ -57,12 +57,9 @@ namespace StringCalculatorSpecs
         {
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
-            if (numbers.Contains(","))
-            {
-                var splitNumbers = numbers.Split(",").ToList();
-                return splitNumbers.Sum(int.Parse);
-            }
-            return int.Parse(numbers);
+
+            var splitNumbers = numbers.Split(",").ToList();
+            return splitNumbers.Sum(int.Parse);
         }
     }
 }

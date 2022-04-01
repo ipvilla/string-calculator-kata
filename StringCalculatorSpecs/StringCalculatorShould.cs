@@ -51,7 +51,7 @@ namespace StringCalculatorSpecs
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
 
-            var splitNumbers = numbers.Split(",").ToList();
+            var splitNumbers = numbers.Replace("\n",",").Split(",").ToList();
             return splitNumbers.Sum(int.Parse);
         }
     }

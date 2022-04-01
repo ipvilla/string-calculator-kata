@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using NUnit.Framework;
 
@@ -52,6 +53,23 @@ namespace StringCalculatorSpecs
 
             Assert.AreEqual(3, result);
         }
+
+        [Test]
+        public void throw_exception_when_negative_number()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var ex = Assert.Throws<NegativesNotAllowed>(() => stringCalculator.Add("//;\n-1;2"));
+
+            Assert.AreEqual("Negatives not allowed", ex.Message);
+            Assert.AreEqual(-1, ex.Number);
+
+        }
+    }
+
+    public class NegativesNotAllowed : Exception
+    {
+        public int Number { get; set; }
     }
 
     public class StringCalculator

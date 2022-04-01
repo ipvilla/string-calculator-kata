@@ -1,3 +1,4 @@
+using System.Linq;
 using NUnit.Framework;
 
 namespace StringCalculatorSpecs
@@ -58,8 +59,8 @@ namespace StringCalculatorSpecs
                 return 0;
             if (numbers.Contains(","))
             {
-                var splitNumbers = numbers.Split(",");
-                return int.Parse(splitNumbers[0]) + int.Parse(splitNumbers[1]);
+                var splitNumbers = numbers.Split(",").ToList();
+                return splitNumbers.Sum(int.Parse);
             }
             return int.Parse(numbers);
         }

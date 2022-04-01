@@ -59,7 +59,7 @@ namespace StringCalculatorSpecs
         {
             var stringCalculator = new StringCalculator();
 
-            var ex = Assert.Throws<NegativesNotAllowed>(() => stringCalculator.Add("//;\n-1;2"));
+            var ex = Assert.Throws<NegativesNotAllowedException>(() => stringCalculator.Add("//;\n-1;2"));
 
             Assert.AreEqual("Negatives not allowed", ex.Message);
             Assert.AreEqual(-1, ex.Number);
@@ -67,9 +67,9 @@ namespace StringCalculatorSpecs
         }
     }
 
-    public class NegativesNotAllowed : Exception
+    public class NegativesNotAllowedException : Exception
     {
-        public NegativesNotAllowed(int number, string message) : base(message)
+        public NegativesNotAllowedException(int number, string message) : base(message)
         {
             Number = number;
         }
@@ -95,7 +95,7 @@ namespace StringCalculatorSpecs
 
             if (negativeNumbers.Any())
             {
-                throw new NegativesNotAllowed(negativeNumbers.FirstOrDefault(), "Negatives not allowed");
+                throw new NegativesNotAllowedException(negativeNumbers.FirstOrDefault(), "Negatives not allowed");
             }
             
             return splitNumbers.Sum(int.Parse);

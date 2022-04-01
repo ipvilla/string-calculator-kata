@@ -69,6 +69,11 @@ namespace StringCalculatorSpecs
 
     public class NegativesNotAllowed : Exception
     {
+        public NegativesNotAllowed(int number, string message) : base(message)
+        {
+            Number = number;
+        }
+
         public int Number { get; set; }
     }
 
@@ -86,6 +91,13 @@ namespace StringCalculatorSpecs
             }
 
             var splitNumbers = numbers.Replace("\n", delimiter).Split(delimiter).ToList();
+            var negativeNumbers = splitNumbers.Where(x => int.Parse(x) < 0).Select(int.Parse);
+
+            if (negativeNumbers.Any())
+            {
+                throw new NegativesNotAllowed(negativeNumbers.FirstOrDefault(), "Negatives not allowed");
+            }
+            
             return splitNumbers.Sum(int.Parse);
         }
     }

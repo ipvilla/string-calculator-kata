@@ -24,7 +24,7 @@ namespace StringCalculatorSpecs
     {
         public int Add(string inputString)
         {
-            throw new System.NotImplementedException();
+            return 0;
         }
     }
 }

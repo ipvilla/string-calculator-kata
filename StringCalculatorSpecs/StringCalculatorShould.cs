@@ -10,9 +10,21 @@ namespace StringCalculatorSpecs
         }
 
         [Test]
-        public void Test1()
+        public void return_0_when_input_string_is_empty()
         {
-            Assert.Pass();
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("");
+
+            Assert.AreEqual(0, result);
+        }
+    }
+
+    public class StringCalculator
+    {
+        public int Add(string inputString)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

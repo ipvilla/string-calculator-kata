@@ -21,33 +21,16 @@ namespace StringCalculatorSpecs
         }
 
         [Test]
-        public void return_input_string_as_number_when_input_string_is_only_one_number()
+        [TestCase("1", 1)]
+        [TestCase("1,2", 3)]
+        [TestCase("1,2,3", 6)]
+        public void return_input_string_as_number_when_input_string_is_numbers_separated_by_commas(string inputNumbers, int expectedResult)
         {
             var stringCalculator = new StringCalculator();
 
-            var result = stringCalculator.Add("1");
+            var result = stringCalculator.Add(inputNumbers);
 
-            Assert.AreEqual(1, result);
-        }
-
-        [Test]
-        public void return_sum_of_numbers_when_input_string_is_two_numbers_separated_by_comma()
-        {
-            var stringCalculator = new StringCalculator();
-
-            var result = stringCalculator.Add("1,2");
-
-            Assert.AreEqual(3, result);
-        }
-
-        [Test]
-        public void return_sum_of_numbers_when_input_string_is_three_numbers_separated_by_commas()
-        {
-            var stringCalculator = new StringCalculator();
-
-            var result = stringCalculator.Add("1,2,3");
-
-            Assert.AreEqual(6, result);
+            Assert.AreEqual(expectedResult, result);
         }
     }
 

@@ -58,10 +58,16 @@ namespace StringCalculatorSpecs
     {
         public int Add(string numbers)
         {
+            var delimiter = ",";
             if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
+            if (numbers.StartsWith("//"))
+            {
+                delimiter = numbers[2].ToString();
+                numbers = numbers.Substring(4);
+            }
 
-            var splitNumbers = numbers.Replace("\n",",").Split(",").ToList();
+            var splitNumbers = numbers.Replace("\n", delimiter).Split(delimiter).ToList();
             return splitNumbers.Sum(int.Parse);
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -100,19 +101,38 @@ namespace StringCalculatorSpecs
                 numbers = numbers.Substring(4);
             }
 
-            var splitNumbers = numbers.Replace("\n", delimiter).Split(delimiter).ToList();
-            var negativeNumbers = splitNumbers.Where(x => int.Parse(x) < 0).Select(int.Parse);
+            var splitNumbers = SplitNumbers(numbers, delimiter);
+            var negativeNumbers = GetNegativeNumbers(splitNumbers);
 
             if (negativeNumbers.Any())
             {
-                var exceptionMessage = "Negatives not allowed";
-                var exceptionArgument = negativeNumbers.Count() > 1 ? 0 : negativeNumbers.FirstOrDefault();
-                exceptionMessage += negativeNumbers.Count() > 1 ? ": " + string.Join(", ", negativeNumbers) : "";
-
-                throw new NegativesNotAllowedException(exceptionArgument, exceptionMessage);
+                var negativesNotAllowedException = BuildException(negativeNumbers);
+                throw negativesNotAllowedException;
             }
 
             return splitNumbers.Sum(int.Parse);
+        }
+
+        private static NegativesNotAllowedException BuildException(IEnumerable<int> negativeNumbers)
+        {
+            var negativeNumbersCount = negativeNumbers.Count();
+            var exceptionMessage = "Negatives not allowed";
+            var exceptionArgument = negativeNumbersCount > 1 ? 0 : negativeNumbers.FirstOrDefault();
+            exceptionMessage += negativeNumbersCount > 1 ? ": " + string.Join(", ", negativeNumbers) : "";
+            
+            return new NegativesNotAllowedException(exceptionArgument, exceptionMessage);
+        }
+
+        private static List<int> GetNegativeNumbers(List<string> splitNumbers)
+        {
+            var negativeNumbers = splitNumbers.Where(x => int.Parse(x) < 0).Select(int.Parse);
+            return negativeNumbers.ToList();
+        }
+
+        private static List<string> SplitNumbers(string numbers, string delimiter)
+        {
+            var splitNumbers = numbers.Replace("\n", delimiter).Split(delimiter).ToList();
+            return splitNumbers;
         }
     }
 }

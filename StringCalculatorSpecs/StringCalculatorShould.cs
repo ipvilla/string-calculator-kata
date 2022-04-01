@@ -7,17 +7,18 @@ namespace StringCalculatorSpecs
 {
     public class StringCalculatorShould
     {
+        private StringCalculator _stringCalculator;
+
         [SetUp]
         public void Setup()
         {
+            _stringCalculator = new StringCalculator();
         }
 
         [Test]
         public void return_0_when_input_string_is_empty()
         {
-            var stringCalculator = new StringCalculator();
-
-            var result = stringCalculator.Add("");
+            var result = _stringCalculator.Add("");
 
             Assert.AreEqual(0, result);
         }
@@ -28,9 +29,7 @@ namespace StringCalculatorSpecs
         [TestCase("1,2,3", 6)]
         public void return_sum_of_numbers_when_input_string_is_numbers_separated_by_commas(string inputNumbers, int expectedResult)
         {
-            var stringCalculator = new StringCalculator();
-
-            var result = stringCalculator.Add(inputNumbers);
+            var result = _stringCalculator.Add(inputNumbers);
 
             Assert.AreEqual(expectedResult, result);
         }
@@ -38,9 +37,7 @@ namespace StringCalculatorSpecs
         [Test]
         public void return_sum_of_numbers_when_input_string_is_numbers_separated_by_commas_and_carriage_returns()
         {
-            var stringCalculator = new StringCalculator();
-
-            var result = stringCalculator.Add("1\n2,3");
+            var result = _stringCalculator.Add("1\n2,3");
 
             Assert.AreEqual(6, result);
         }
@@ -48,9 +45,7 @@ namespace StringCalculatorSpecs
         [Test]
         public void support_any_kind_of_indicated_delimiter()
         {
-            var stringCalculator = new StringCalculator();
-
-            var result = stringCalculator.Add("//;\n1;2");
+            var result = _stringCalculator.Add("//;\n1;2");
 
             Assert.AreEqual(3, result);
         }
@@ -58,9 +53,7 @@ namespace StringCalculatorSpecs
         [Test]
         public void throw_exception_when_negative_number()
         {
-            var stringCalculator = new StringCalculator();
-
-            var ex = Assert.Throws<NegativesNotAllowedException>(() => stringCalculator.Add("//;\n-1;2"));
+            var ex = Assert.Throws<NegativesNotAllowedException>(() => _stringCalculator.Add("//;\n-1;2"));
 
             Assert.AreEqual("Negatives not allowed", ex.Message);
             Assert.AreEqual(-1, ex.Number);
@@ -69,9 +62,7 @@ namespace StringCalculatorSpecs
         [Test]
         public void throw_exception_when_two_negative_numbers_and_show_numbers_in_exception_message()
         {
-            var stringCalculator = new StringCalculator();
-
-            var ex = Assert.Throws<NegativesNotAllowedException>(() => stringCalculator.Add("//;\n-1;-2"));
+            var ex = Assert.Throws<NegativesNotAllowedException>(() => _stringCalculator.Add("//;\n-1;-2"));
 
             Assert.AreEqual("Negatives not allowed: -1, -2", ex.Message);
             Assert.AreEqual(0, ex.Number);

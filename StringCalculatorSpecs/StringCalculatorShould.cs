@@ -63,7 +63,17 @@ namespace StringCalculatorSpecs
 
             Assert.AreEqual("Negatives not allowed", ex.Message);
             Assert.AreEqual(-1, ex.Number);
+        }
 
+        [Test]
+        public void throw_exception_when_two_negative_numbers_and_show_numbers_in_exception_message()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var ex = Assert.Throws<NegativesNotAllowedException>(() => stringCalculator.Add("//;\n-1;-2"));
+
+            Assert.AreEqual("Negatives not allowed: -1, -2", ex.Message);
+            Assert.AreEqual(string.Empty, ex.Number);
         }
     }
 

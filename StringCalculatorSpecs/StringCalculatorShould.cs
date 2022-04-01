@@ -73,7 +73,7 @@ namespace StringCalculatorSpecs
             var ex = Assert.Throws<NegativesNotAllowedException>(() => stringCalculator.Add("//;\n-1;-2"));
 
             Assert.AreEqual("Negatives not allowed: -1, -2", ex.Message);
-            Assert.AreEqual(string.Empty, ex.Number);
+            Assert.AreEqual(0, ex.Number);
         }
     }
 
@@ -105,9 +105,13 @@ namespace StringCalculatorSpecs
 
             if (negativeNumbers.Any())
             {
-                throw new NegativesNotAllowedException(negativeNumbers.FirstOrDefault(), "Negatives not allowed");
+                var exceptionMessage = "Negatives not allowed";
+                var exceptionArgument = negativeNumbers.Count() > 1 ? 0 : negativeNumbers.FirstOrDefault();
+                exceptionMessage += negativeNumbers.Count() > 1 ? ": " + string.Join(", ", negativeNumbers) : "";
+
+                throw new NegativesNotAllowedException(exceptionArgument, exceptionMessage);
             }
-            
+
             return splitNumbers.Sum(int.Parse);
         }
     }

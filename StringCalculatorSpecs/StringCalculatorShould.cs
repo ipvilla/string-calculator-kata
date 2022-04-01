@@ -38,6 +38,16 @@ namespace StringCalculatorSpecs
 
             Assert.AreEqual(3, result);
         }
+
+        [Test]
+        public void return_sum_of_numbers_when_input_string_is_three_numbers_separated_by_commas()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("1,2,3");
+
+            Assert.AreEqual(6, result);
+        }
     }
 
     public class StringCalculator
